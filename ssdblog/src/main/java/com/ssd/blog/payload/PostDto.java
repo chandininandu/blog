@@ -1,7 +1,6 @@
 package com.ssd.blog.payload;
 
 import java.util.Date;
-
 import jakarta.annotation.Nonnull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
