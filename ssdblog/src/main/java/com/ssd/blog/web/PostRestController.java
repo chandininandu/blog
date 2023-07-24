@@ -29,7 +29,7 @@ public class PostRestController {
 	@GetMapping("/get")
 	 public String display()
 	 {
-		return "it's ready";
+		return "it's testing for working or not";
 		 
 	 }
 }
