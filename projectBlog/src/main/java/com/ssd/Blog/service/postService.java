@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ssd.Blog.Entity.PostEntity;
+import com.ssd.Blog.exceptions.TitleExceptions;
 import com.ssd.Blog.payload.PostDto;
 import com.ssd.Blog.repository.PostRepository;
 
@@ -20,7 +21,13 @@ public class postService {
 	public PostDto makePost(PostDto Dto) {
 		
 		PostEntity post = this.modelMapper.map(Dto, PostEntity.class);
-	   post  =	postRepository.save(post);
+		try {
+			 post  =	postRepository.save(post);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			throw new TitleExceptions(Dto.getTittle(),Dto.getTittle()+"    The Title Your Provided IS AllReady Exits");
+		}
 		
 		Dto = this.modelMapper.map(post, PostDto.class);
 		return Dto;
