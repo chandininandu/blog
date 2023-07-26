@@ -3,6 +3,8 @@ package com.ssd.blog.payload;
 import java.util.Date;
 
 import jakarta.annotation.Nonnull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,10 +18,12 @@ public class PostDto {
 	
 	private Long id;
 	
-	@Nonnull
+	@NotEmpty(message = "title is required")
+	@Size(min = 4,max = 15)
 	private String title;
-	@Nonnull
+	@NotEmpty(message = "description is required")
 	private String description;
+	@NotEmpty(message = "content is not required")
 	private String content;
 	private Date postDate;
 	@Override
