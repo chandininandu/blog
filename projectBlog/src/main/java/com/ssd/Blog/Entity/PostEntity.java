@@ -1,7 +1,6 @@
 package com.ssd.Blog.Entity;
 
 import java.util.Date;
-
 import jakarta.annotation.Generated;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
