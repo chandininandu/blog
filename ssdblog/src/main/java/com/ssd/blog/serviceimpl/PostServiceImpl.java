@@ -1,10 +1,14 @@
 package com.ssd.blog.serviceimpl;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ssd.blog.entity.Post;
+import com.ssd.blog.exception.TitleExistException;
 import com.ssd.blog.payload.PostDto;
 import com.ssd.blog.repository.PostRepository;
 
@@ -20,10 +24,30 @@ public class PostServiceImpl {
 	public PostDto sendPost(PostDto dto) {
 		
 		Post post = this.modelMapper.map(dto, Post.class);
+		try {
 		post = postRepository.save(post);
+		}catch (Exception e) {
+			e.getMessage();
+			throw new TitleExistException(dto.getTitle(),"already "+dto.getTitle()+" existed");
+		}
 		dto = this.modelMapper.map(post, PostDto.class);
 		
 		return dto;
 	}
-
+	
+	public PostDto getPostById(Long id) {
+		Post post=postRepository.findById(id).get();
+		PostDto pDto=modelMapper.map(post, PostDto.class);
+		return pDto;
+	}
+	
+	public List<PostDto> getAllPosts(){
+		List<Post> posts=postRepository.findAll();
+		return posts.stream().map((Post)->modelMapper.map(Post, PostDto.class)).collect(Collectors.toList());
+	}
+	
+	public String postDelateById(Long id) {
+		postRepository.deleteById(id);
+		return "record deleted ";
+		}
 }
