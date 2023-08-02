@@ -7,4 +7,6 @@ import com.ssd.blog.entity.Post;
 public interface PostRepository extends JpaRepository<Post, Long>{
 
 	
+
+	
 }
