@@ -11,7 +11,6 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
-@Data
 public class CommentDto {
     private long id;
     // name should not be null or empty

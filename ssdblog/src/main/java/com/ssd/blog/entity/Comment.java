@@ -8,9 +8,6 @@ import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 
 
-@AllArgsConstructor
-@NoArgsConstructor
-
 @Entity
 @Table(name = "comments")
 public class Comment {
