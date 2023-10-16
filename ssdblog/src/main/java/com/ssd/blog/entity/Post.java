@@ -16,10 +16,8 @@ import lombok.ToString;
 
 @Entity
 @Table(name="post")
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
+
+
 public class Post {
 	
 	@Id

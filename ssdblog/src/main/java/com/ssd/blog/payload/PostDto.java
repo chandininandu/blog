@@ -18,7 +18,7 @@ public class PostDto {
 	
 	@Nonnull
 	private String title;
-	@Nonnull
+	
 	private String description;
 	private String content;
 	private Date postDate;

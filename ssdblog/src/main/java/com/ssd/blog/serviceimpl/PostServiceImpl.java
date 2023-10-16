@@ -16,7 +16,6 @@ public class PostServiceImpl {
 	
 	@Autowired
 	private ModelMapper modelMapper;
-	
 	public PostDto sendPost(PostDto dto) {
 		
 		Post post = this.modelMapper.map(dto, Post.class);
